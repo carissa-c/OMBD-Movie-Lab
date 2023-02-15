@@ -1,0 +1,38 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<!--searches specific movie-->
+<form asp-method="post" asp-action="MovieSearchForm">
+    <p>Search Movie Title</p>
+    <input type="text" name="Title" />
+
+    <input type="submit" />
+</form>
+
+@{
+    if (Model != null)
+    {
+        int i = 0;
+        foreach (Movies m in Model)
+        {
+            string name = $"Movie{i}";
+            i++;
+            <h1>@m.Title</h1>
+            <p>@m.Year</p>
+            <p>@m.Released</p>
+            <img src="@m.Poster" />
+        }
+    }
+
+}
+<!--foreach (Movies m in Model.Movies)
+    {
+        <h1>m.Title</h1>
+        <p>m.Year</p>
+        <p>m.Released</p>
+        <img src="m.Poster" />
+    }*-->
